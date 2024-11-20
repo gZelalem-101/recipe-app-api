@@ -11,6 +11,7 @@ EXPOSE 8010
 
 ARG DEV=false
 # this creates image layer for each command we run
+# creates new virtual environment
 RUN python -m venv /py && \
     /py/bin/pip install --upgrade pip && \
     /py/bin/pip install -r /tmp/requirements.txt && \
