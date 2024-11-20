@@ -1,0 +1,7 @@
+#this tells linting to exclde. so there are not linting
+[flake8]
+exclude =
+  migrations,
+  __pycache__,
+  manage.py,
+  settings.py
