@@ -1,7 +1,7 @@
 FROM python:3.9-alpine3.13
 LABEL maintainer="gzelalem"
 
-ENV PYTHONUNBUFFERED 1
+ENV PYTHONUNBUFFERED=1
 
 # Copy the requirements files and application code
 COPY ./requirements.txt /tmp/requirements.txt
