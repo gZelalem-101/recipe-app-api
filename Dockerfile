@@ -23,8 +23,14 @@ RUN python -m venv /py && \
     rm -rf /tmp && \
     apk del .tmp-build-deps && \
     adduser --disabled-password --no-create-home django-user
+# Install sudo
+RUN apk add sudo
 
+# Set PATH so that Python in the virtual environment is available globally
 ENV PATH="/py/bin:$PATH"
 
 # Switch to non-root user to run the app
 USER django-user
+
+# Ensure that commands like `python` are correctly recognized
+# Use explicit path to Python if needed, e.g., /py/bin/python
