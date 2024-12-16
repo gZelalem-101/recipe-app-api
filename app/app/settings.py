@@ -39,6 +39,10 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "core",
+    "rest_framework",
+    "rest_framework.authtoken",
+    "drf_spectacular",
+    "user",
 ]
 
 MIDDLEWARE = [
@@ -75,25 +79,36 @@ WSGI_APPLICATION = "app.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "HOST": os.environ.get("DB_HOST", default="db"),
+        "NAME": os.environ.get("DB_NAME", default="devdb"),
+        "USER": os.environ.get("DB_USER", default="devusern"),
+        "PASSWORD": os.environ.get("DB_PASS", default="changeii9o"),
+        "PORT": "5432",
+    }
+}
 # DATABASES = {
 #     "default": {
 #         "ENGINE": "django.db.backends.postgresql",
-#         "HOST": os.environ.get("DB_HOST"),
-#         "NAME": os.environ.get("DB_NAME"),
-#         "USER": os.environ.get("DB_USER"),
-#         "PASSWORD": os.environ.get("DB_PASS"),
+#         "HOST": env("DB_HOST", default="localhost"),
+#         "NAME": env("DB_NAME", default="devdb"),
+#         "USER": env("DB_USER", default="devusern"),
+#         "PASSWORD": env("DB_PASS", default="changeii9o"),
+#         "PORT": "5444",  # The port you exposed in Docker
 #     }
 # }
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'devdb',
-        'USER': 'devusern',  # Make sure this matches the POSTGRES_USER
-        'PASSWORD': 'changeii9o',  # Make sure this matches the POSTGRES_PASSWORD
-        'HOST': 'db',  # 'db' matches the service name in docker-compose.yml
-        'PORT': '5432',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'devdb',
+#         'USER': 'devusern',  # Make sure this matches the POSTGRES_USER
+#         'PASSWORD': 'changeii9o',  # Make sure this matches the POSTGRES_PASSWORD
+#         'HOST': 'db',  # 'db' matches the service name in docker-compose.yml
+#         'PORT': '5432',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -137,3 +152,9 @@ STATIC_URL = "/static/"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+AUTH_USER_MODEL = "core.User"
+
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
