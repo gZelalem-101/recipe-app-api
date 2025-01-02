@@ -33,6 +33,6 @@ services:
       - POSTGRES_USER=devusern
       - POSTGRES_PASSWORD=changeii9o
     ports:
-      - "5432:5432"
+      - "5433:5432"
 volumes:
   dev-db-data:

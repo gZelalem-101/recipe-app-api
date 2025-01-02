@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "rest_framework.authtoken",
     "drf_spectacular",
     "user",
+    "recipe",
 ]
 
 MIDDLEWARE = [
@@ -87,6 +88,9 @@ DATABASES = {
         "USER": os.environ.get("DB_USER", default="devusern"),
         "PASSWORD": os.environ.get("DB_PASS", default="changeii9o"),
         "PORT": "5432",
+        "TEST": {
+            "NAME": "test_devdb",  # Ensure test database is created
+        },
     }
 }
 # DATABASES = {

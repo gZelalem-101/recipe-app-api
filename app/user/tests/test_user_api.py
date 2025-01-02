@@ -1,6 +1,7 @@
 """
 Tests for the user API.
 """
+from django.core.management import call_command
 from django.test import TestCase
 from django.contrib.auth import get_user_model
 from django.urls import reverse
@@ -121,6 +122,7 @@ class PrivateUserApiTests(TestCase):
     """Test API requests that require authentication."""
 
     def setUp(self):
+
         self.user = create_user(
             email='test@example.com',
             password='testpass123',
@@ -155,3 +157,4 @@ class PrivateUserApiTests(TestCase):
         self.assertEqual(self.user.name, payload['name'])
         self.assertTrue(self.user.check_password(payload['password']))
         self.assertEqual(res.status_code, status.HTTP_200_OK)
+
