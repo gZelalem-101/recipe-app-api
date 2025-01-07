@@ -7,6 +7,7 @@ from django.contrib.auth import get_user_model
 from django.urls import reverse
 from core import models
 
+
 class ModelTests(TestCase):
     """Test models."""
 
@@ -16,7 +17,9 @@ class ModelTests(TestCase):
             email="superuser@example.com",
             password="superpass123",
         )
-        self.client.login(email="superuser@example.com", password="superpass123")
+        self.client.login(
+            email="superuser@example.com",
+            password="superpass123")
 
     def test_create_user_with_email_successful(self):
         """Test creating a user with an email is successful."""

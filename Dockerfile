@@ -26,6 +26,9 @@ RUN python -m venv /py && \
 # Install sudo
 RUN apk add sudo
 
+#Install autopep8
+RUN pip install autopep8
+
 # Set PATH so that Python in the virtual environment is available globally
 ENV PATH="/py/bin:$PATH"
 
