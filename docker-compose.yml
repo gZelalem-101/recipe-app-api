@@ -9,6 +9,7 @@ services:
       - "8010:8010"
     volumes:
       - ./app:/app
+      - dev-static-data:/vol/web
 
     command: >
       sh -c "python manage.py wait_for_db &&
@@ -36,3 +37,4 @@ services:
       - "5433:5432"
 volumes:
   dev-db-data:
+  dev-static-data:
