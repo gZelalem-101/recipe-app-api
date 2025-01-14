@@ -41,10 +41,10 @@ class RecipeViewSet(viewsets.ModelViewSet):
 
 
 class BaseRecipeAttrViewSet(mixins.DestroyModelMixin,
-                 mixins.UpdateModelMixin,
-                 mixins.ListModelMixin,
-                 viewsets.GenericViewSet
-                 ):
+                            mixins.UpdateModelMixin,
+                            mixins.ListModelMixin,
+                            viewsets.GenericViewSet
+                            ):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
 
@@ -63,4 +63,3 @@ class IngredientViewSet(BaseRecipeAttrViewSet):
     """Manage Ingredient in the database."""
     serializer_class = serializers.IngredientSerializer
     queryset = Ingredients.objects.all()
-
