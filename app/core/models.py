@@ -1,9 +1,8 @@
 """
 Database models.
 """
-from email.mime import image
 import uuid
-import os # For file pathe mangement functions
+import os   # For file pathe mangement functions
 
 from django.db import models
 from django.conf import settings
